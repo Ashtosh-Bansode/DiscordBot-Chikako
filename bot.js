@@ -1,6 +1,6 @@
 var Discord = require('discord.io');
 var logger = require('winston');
-var auth = require('./auth.json');
+
 const osu = require('node-osu');
 const discordjs = require('discord.js');
 const {google} = require('googleapis');
@@ -19,8 +19,8 @@ const malScraper = require('mal-scraper')
 
 
 var map;
-let mySauce = new SauceNAO('ab26229a2789bbeb0b37a328f8e7dedd3cbfd703');
-const osuApi = new osu.Api('6c7be649ddec2acd10e6914960eef9d7f6339aaa', {
+let mySauce = new SauceNAO(process.env.SNAO_API);
+const osuApi = new osu.Api(process.env.OSU_API, {
 	// baseUrl: sets the base api url (default: https://osu.ppy.sh/api)
 	notFoundAsError: true, // Throw an error on not found instead of returning nothing. (default: true)
 	completeScores: true, // When fetching scores also fetch the beatmap they are for (Allows getting accuracy) (default: false)
@@ -34,8 +34,9 @@ logger.add(new logger.transports.Console, {
 });
 logger.level = 'debug';
 // Initialize Discord Bot
+
 var bot = new Discord.Client({
-   token: auth.token,
+   token: process.env.BOT_TOKEN,
    autorun: true
 });
 bot.on('ready', function (evt) {
