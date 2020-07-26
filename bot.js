@@ -216,7 +216,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				var map= {
 					color: 6826080,
 					footer: { 
-					  text: 'Map of bandra i guess'
+					  text: 'Map '
 					},
 					thumbnail:
 					{
@@ -789,8 +789,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 								t+=1
 								gamedata.push(scoredata)
 							});
-							
-							
 							console.log(gamedata)
 							bot.sendMessage({
 							to: channelID,
@@ -827,22 +825,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 						to: channelID,
 						message: "This feature is not yet ready."
 						});
-					/*if (user=="[Blank]"){
-						const mal = new MalApi({
-						  username:"_-Blank_", // The username of the user.
-						  password:"********", // The password of the user.
-						})
-						mal.account.verifyCredentials()
-						  .then(res => console.log(res))
-						  .catch(err => console.log(err))
-						  
-					}
-					else{
-						bot.sendMessage({
-							to: channelID,
-							message: "You have not linked your MAL account"
-							});
-					}*/
+					
 				break;
 				case "sa":
 				case "searchAnime":
@@ -885,10 +868,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 							message: "Eh use Official name , i am not that accurate >.<"
 							});
 						})
-					bot.sendMessage({
-						to: channelID,
-						message: "'''official MAL API when ;-;'''"
-						});
+					
 					break;
 				case "detail":
 					jsonFile.readFile('animedata.json', function (err, animedata) {
@@ -924,41 +904,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 						message: "This feature is not yet ready."
 						});
 					break;
-					/*
-					fetch('https://osu.ppy.sh/osu/848345').then(res => {
-						const dest = fs.createWriteStream('file.osu');
-						res.body.pipe(file);
-					});
-					/*let file = fs.createWriteStream(`file.osu`);
-					
-						let stream = request({
-							
-							uri: 'https://osu.ppy.sh/osu/848345',
-							headers: {
-								'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*;q=0.8',
-								'Accept-Encoding': 'gzip, deflate, br',
-								'Accept-Language': 'en-US,en;q=0.9,fr;q=0.8,ro;q=0.7,ru;q=0.6,la;q=0.5,pt;q=0.4,de;q=0.3',
-								'Cache-Control': 'max-age=0',
-								'Connection': 'keep-alive',
-								'Upgrade-Insecure-Requests': '1',
-								'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36'
-							},
-							
-							gzip: true
-						})
-						.pipe(file)
-						.on('finish', () => {
-							console.log(`The file is finished downloading.`);
-							resolve();
-						})
-						.on('error', (error) => {
-							reject(error);
-						})*/
-	
-				
-
-				
-					
+						
         }
     }
 });
