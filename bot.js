@@ -76,51 +76,49 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	}
 	if(user[0]=="@"){user=user.replace("@","")}
 	
-    if (message.substring(0, 2) == 'c!') 
-	{
-        var args = message.substring(2).split(' ');
+    if (message.substring(0, 2) == 'c!') {
+    	var args = message.substring(2).split(' ');
         var cmd = args[0];
-		if(cmd=='searchAnime' || cmd=='sa')
-			animuname=args[2]
-			for(i=2;i<args.length;i++){animuname+=args[i]+" "}
+	animuname="";
+	if(cmd=='searchAnime' || cmd=='sa')
+		for(i=2;i<args.length;i++){animuname+=args[i]+" "}
         if (cmd=='add')
 			num1=parseInt(args[1]);
 			num2=parseInt(args[2]);
-		if (cmd=='weather')
-			loc=args[1];
-		if(cmd=='osu'||cmd=='otop'||cmd=='rc')
-			osuname=args[1];
-		if(cmd=='sr')
-			srnum=args[1];
-		if(cmd=="match")
-			matchid=args[1];
-		if(cmd=="notify"){
-			when=args[1]
-			timenum=0
-			timeformat="notset"
-			timedmsg=""
-			if(args[1]==null){when="placeholder"}
-			if(args[2]==null){
+	if (cmd=='weather')
+		loc=args[1];
+	if(cmd=='osu'||cmd=='otop'||cmd=='rc')
+		osuname=args[1];
+	if(cmd=='sr')
+		srnum=args[1];
+	if(cmd=="match")
+		matchid=args[1];
+	if(cmd=="notify"){
+		when=args[1]
+		timenum=0
+		timeformat="notset"
+		timedmsg=""
+		if(args[1]==null){when="placeholder"}
+		if(args[2]==null){
+			bot.sendMessage({
+			to: channelID,
+			message: "please include time"
+			});}
+		else{
+			timenum=args[2]
+			if (args[3]==null){
 				bot.sendMessage({
 				to: channelID,
-				message: "please include time"
-			});}
+				message: timenum+" what? min/sec/hour -_-"
+				});	
+			}
 			else{
-				timenum=args[2]
-				if (args[3]==null){
-					bot.sendMessage({
-					to: channelID,
-					message: timenum+" what? min/sec/hour -_-"
-					});	
+				timeformat=args[3]
+				if(args[4]==null){timedmsg=" "}
+				else{ for(i=4;i<args.length;i++){timedmsg+=args[i]+" "}}
 				}
-				else{
-					timeformat=args[3]
-					if(args[4]==null){timedmsg=" "}
-					else{ for(i=4;i<args.length;i++){timedmsg+=args[i]+" "}}
-					}
-				}
-		}
-		
+			}
+		}	
         //args = args.splice(1);
         switch(cmd) {
             // !ping
