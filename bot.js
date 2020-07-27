@@ -79,7 +79,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
     if (message.substring(0, 2) == 'c!') {
     	var args = message.substring(2).split(' ');
         var cmd = args[0];
-	animuname="";
+	var animuname="";
 	if(cmd=='searchAnime' || cmd=='sa')
 		for(i=2;i<args.length;i++){animuname+=args[i]+" "}
         if (cmd=='add')
